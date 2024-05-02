@@ -4,10 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'home.css' %}">
-    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'catalogo.css' %}">
+    <title>Ferremas | Home</title>
 </head>
 <body>
-    
+    <section id="principal">
+        <div class="izquierda">
+            <div class="arriba">
+                <h1 id="titulo">Ferremas</h1>
+                <h2 id="datos">nombre</h2>
+            </div>
+            <div class="medio">
+                <button>carro</button>
+                <button>seguro</button>
+                <button>seguimiento</button>
+                <button>historial de compra</button>
+            </div>
+            <div class="abajo">
+                <button>cerrar sesion</button>
+            </div>
+        </div>
+        <div class="derecha">
+            <h1>catalogo</h1>
+
+            <div class="producto">
+                <!-- Imagen del producto -->
+                <img class="producto-imagen" src="https://www.abc.es/xlsemanal/wp-content/uploads/sites/5/2023/10/como-entender-gatos-animales.jpg" alt="Nombre del producto">
+              
+                <!-- Título del producto -->
+                <h2 class="producto-titulo">Nombre del producto</h2>
+              
+                <!-- Descripción del producto -->
+                <p class="producto-descripcion">Descripción corta del producto.</p>
+              
+                <!-- Precio del producto -->
+                <p class="producto-precio">$99.99</p>
+              
+                <!-- Botón de compra -->
+                <button>Agregar al carrito</button>
+              </div>
+        </div>
+    </section>
 </body>
 </html>

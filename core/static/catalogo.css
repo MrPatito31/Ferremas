@@ -1,0 +1,105 @@
+body{
+    /* quitar margenes */
+    margin: 0;
+    padding: 0;
+}
+
+#principal{
+    /* dispocision total de la pantalla */
+    display: flex;
+}
+
+.izquierda{
+    /* dispocision del lado izquerdo */
+    background: aqua;
+    height: 100vh;
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+}
+
+.derecha{
+    /* dispocision del lado derecho */
+    background: aquamarine;
+    width: 85%;
+    height: 100vh;
+}
+
+.arriba{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+    background: brown;
+    width: 100%;
+    height: 20%;
+}
+#titulo{
+    /* estilo de texto */
+    margin: 0;
+}
+
+#datos{
+    margin: 0;
+    margin-top: 20%;
+}
+
+.medio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 15px;
+    justify-content: center;
+    background: blueviolet;
+    width: 100%;
+    height: 65%;
+    overflow: auto;
+}
+
+.abajo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: chocolate;
+    width: 100%;
+    height: 15%;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+.producto {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: 300px;
+    margin-bottom: 20px;
+  }
+
+  /* Estilos para la imagen del producto */
+  .producto-imagen {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+
+  /* Estilos para el título del producto */
+  .producto-titulo {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+
+  /* Estilos para la descripción del producto */
+  .producto-descripcion {
+    color: #666;
+    margin-bottom: 10px;
+  }
+
+  /* Estilos para el precio del producto */
+  .producto-precio {
+    color: #ff5733; /* Color naranja para el precio */
+    font-size: 1.2em;
+  }

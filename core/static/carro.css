@@ -1,0 +1,41 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.interior{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    background-color: violet;
+    height: 50vh;
+    width: 100%;
+    row-gap: 10%;
+} 
+
+.carroCompras{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    background-color:chocolate;
+    height: 10vh;
+}
+
+.titulo{
+    justify-content: center;
+    align-items:center;
+    background-color:yellowgreen;
+    height: 10vh;
+}
+
+.piePagina{
+    justify-content: center;
+    align-items:center;
+    background-color:blue;
+    height: 50vh;
+}
+
+.finPagina{
+    background:brown;
+}
