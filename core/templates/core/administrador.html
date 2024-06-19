@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'administrador.css' %}">
+    <script src="{% static 'js/administrador.js' %}"></script>
+    <title>Ferremas | Administrador</title>
+</head>
+<body>
+    <section id="principal">
+        <div class="izquierda">
+            <div class="arriba">
+                <a href="{% url 'catalogo' %}" id="titulo">Ferremas</a>
+                {% if user.is_authenticated %}
+                    <h2 id="datos">{{user.first_name}}</h2>
+                {% else %}
+                    <h2></h2>
+                {% endif %}
+            </div>
+            <div class="medio">
+                <button id="promociones-btn">Promociones</button>
+                <button id="estrategias-btn">Estrategias</button>
+                <button id="informe-btn">Informe</button>
+            </div>
+            <form action="{% url 'logout' %}" method="post" class="abajo">
+                {% csrf_token %}
+                <button>cerrar sesion</button>
+            </form>
+        </div>
+        <div class="derecha" id="derecha">
+            <!-- Contenido dinámico se mostrará aquí -->
+        </div>
+    </section>
+
+    <!-- Plantillas de contenido -->
+    <template id="promociones-template">
+        <div class="container">
+            <h1>Generar Promociones</h1>
+            <form id="promotionForm">
+                <label for="promoName">Nombre de la Promoción:</label>
+                <input type="text" id="promoName" name="promoName" required>
+    
+                <label for="promoDescription">Descripción:</label>
+                <textarea id="promoDescription" name="promoDescription" required></textarea>
+    
+                <label for="startDate">Fecha de Inicio:</label>
+                <input type="date" id="startDate" name="startDate" required>
+    
+                <label for="endDate">Fecha de Fin:</label>
+                <input type="date" id="endDate" name="endDate" required>
+    
+                <button type="submit">Generar Promoción</button>
+            </form>
+        </div>
+    </template>
+
+    <template id="estrategias-template">
+        <div class="container">
+            <h1>Gestión de Estrategias de Ventas</h1>
+            <form id="salesStrategyForm">
+                <label id="label1" for="strategyName">Nombre de la Estrategia:</label>
+                <input type="text" id="strategyName" name="strategyName" required>
+    
+                <label id="label1" for="strategyObjective">Objetivo:</label>
+                <input type="text" id="strategyObjective" name="strategyObjective" required>
+    
+                <label id="label1" for="strategyDescription">Descripción:</label>
+                <textarea id="strategyDescription" name="strategyDescription" required></textarea>
+    
+                <label id="label1" for="strategyType">Tipo de Estrategia:</label>
+                <select id="strategyType" name="strategyType" required>
+                    <option value="online">Online</option>
+                    <option value="offline">Offline</option>
+                    <option value="mixta">Mixta</option>
+                </select>
+    
+                <button type="submit">Guardar Estrategia</button>
+            </form>
+        </div>
+    </template>
+
+    <template id="informe-template">
+        <div class="container">
+            <h1>Generar Informe de Ventas</h1>
+            <form id="salesReportForm">
+                <label for="reportTitle">Título del Informe:</label>
+                <input type="text" id="reportTitle" name="reportTitle" required>
+    
+                <label for="startDate">Fecha de Inicio:</label>
+                <input type="date" id="startDate" name="startDate" required>
+    
+                <label for="endDate">Fecha de Fin:</label>
+                <input type="date" id="endDate" name="endDate" required>
+    
+                <label for="reportDescription">Descripción:</label>
+                <textarea id="reportDescription" name="reportDescription" required></textarea>
+    
+                <button type="submit">Generar Informe</button>
+            </form>
+        </div>
+    </template>
+
+</body>
+</html>

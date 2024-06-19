@@ -1,0 +1,124 @@
+body{
+    /* quitar margenes */
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+#principal{
+    /* dispocision total de la pantalla */
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+#titulo{
+    /*dispocicion del titulo*/
+    margin: 0;
+    padding: 0;
+    margin-left: 40px;
+    text-align: center;
+    font-size: larger;
+    font-weight: bolder;
+    text-decoration: none;
+    color: #ffff;
+}
+#barra{
+    /*config de la barra de nav*/
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #003366;
+    width: 100vw;
+    height: 60px;
+}
+
+#contenido{
+    /*config del catalogo*/
+    width: 100vw;
+    height: 100vh;
+}
+
+#title {
+    text-align: center;
+    color: #ffff;
+}
+
+#despachos{
+    width: 50%;
+    padding-left: 30px;
+}
+
+#compras{
+    height: 400px;
+    overflow: auto;
+}
+
+#abajo{
+    display: flex;
+    flex-direction: column;
+}
+
+#opciones{
+    padding-left: 30px;
+    height: 20px;
+}
+
+#comprar{
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#dispo{
+    display: flex;
+    justify-content: space-between;
+}
+
+input{
+    width: 70%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6;
+}
+
+th {
+    background-color: #868686;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+button {
+    /*boton*/
+    width: 320px;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    /*boton al clickear*/
+    background-color: #0056b3;
+}

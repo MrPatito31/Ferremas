@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'pago.css' %}">
+    <script src="{% static 'js/pago.js' %}"></script>
+    <title>Ferremas | Pago</title>
+</head>
+<body>
+    <section id="principal">
+        <div id="barra">
+            <a href="{% url 'catalogo' %}" id="titulo">Ferremas</a>
+        </div>
+        <div id="contenido"> <!--Contenedor principal-->
+            <h1 id="title">Resumen de Compra</h1>
+            <div id="compras">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Imagen</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>SubTotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in carro %}
+                        <tr>
+                            <td>{{ item.1 }}</td>
+                            <td><img src="{{ item.3 }}" alt="" height="100" width="100"></td>
+                            <td>{{ item.4 }}</td>
+                            <td>{{ item.5 }}</td>
+                            <td>{{ item.6 }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="abajo">
+                
+                <div id="opciones">
+                    <button id="tienda-btn">Tienda</button>
+                    <button id="domicilio-btn">Domicilio</button>
+                </div>
+                <form id="dispo" action="{% url 'pago' %}">
+                    <div id="despachos">
+                        <!--se injecta los template-->
+                    </div> 
+                    <div id="comprar">
+                        <button>Comprar</button>
+                    </div>
+                </form>
+                
+            </div>
+            
+        </div><!--Contenedor principal-->
+    </section>
+
+    <template id="tienda-template">
+        <h3>Tienda</h3>
+            <label for="opciones">Opciones:</label>
+            <select id="opcione" name="despacho" id="despacho">
+                <option value="Ferremas melipilla">Ferremas melipilla</option>
+                <option value="Ferremas Santiago">Ferremas Santiago</option>
+                <option value="Ferremas Valparaiso">Ferremas Valparaiso</option>
+                <option value="Ferremas Concepcion">Ferremas Concepcion</option>
+            </select>
+    </template>
+
+    <template id="domicilio-template">
+        <h3>Domicilio</h3>
+        <input type="text" placeholder="Direccion" id="despacho" name="despacho">
+    </template>
+</body>
+</html>

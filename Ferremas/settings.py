@@ -104,7 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-es'
 
 TIME_ZONE = 'UTC'
 
@@ -122,3 +122,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = 'catalogo'
+
+PAYPAL_CLIENT_ID = 'AUiE-RPusa4TCeqVWhRSoW9T54M2pSNpln-ZJ1lJnq670mGgUwjux2WeUk8RIBKQjsEPK1yQL4mLZRxp'
+PAYPAL_CLIENT_SECRET = 'ELRSaOSLGgmgXZ5VG548l3uKtd7BqHZnoHk4LPyDXGC-JuOGSjGOJjwc7s4QOp_8Z2cX5vIhsBqD8PAZ'
+PAYPAL_MODE = 'sandbox'  # Cambia a 'live' cuando estés listo para producción

@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualización de Pedidos</title>
+    <link rel="stylesheet" href="{% static 'bodega.css' %}">
+</head>
+<body>
+    <div id="barra">
+        <a href="{% url 'catalogo' %}" id="titulo">Ferremas</a>
+    </div>
+    <div class="container">
+        <h1>Visualización de Pedidos</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID del Pedido</th>
+                    <th>Cliente</th>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Fecha del Pedido</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

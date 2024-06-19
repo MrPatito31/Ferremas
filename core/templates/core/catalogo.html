@@ -5,45 +5,124 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'catalogo.css' %}">
+    <script src="{% static 'js/catalogo.js' %}"></script>
     <title>Ferremas | Home</title>
 </head>
 <body>
     <section id="principal">
-        <div class="izquierda">
-            <div class="arriba">
-                <h1 id="titulo">Ferremas</h1>
-                <h2 id="datos">nombre</h2>
-            </div>
-            <div class="medio">
-                <button>carro</button>
-                <button>seguro</button>
-                <button>seguimiento</button>
-                <button>historial de compra</button>
-            </div>
-            <div class="abajo">
-                <button>cerrar sesion</button>
-            </div>
-        </div>
-        <div class="derecha">
-            <h1>catalogo</h1>
+        <div id="barra">
+            <a href="{% url 'catalogo' %}" id="titulo">Ferremas</a>
+            <div id="opciones"><!--Contenedor Opciones-->
+                <button id="openhistorial">historial</button>
+                <button id="opencarro">carro</button>
+                
+                <div class="overlay" id="overlay"><!--Overlay-->
+                    
+                    <div class="carro" id="carro"><!--Carro-->
+                        <div class="carro-content">
+                            <form id="tabla">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Producto</th>
+                                            <th>Imagen</th>
+                                            <th>Precio</th>
+                                            <th>Cantidad</th>
+                                            <th>SubTotal</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for item in carro %}
+                                        <tr>
+                                            <td>{{ item.1 }}</td>
+                                            <td><img src="{{ item.3 }}" alt="" height="100" width="100"></td>
+                                            <td>{{ item.4 }}</td>
+                                            <td>{{ item.5 }}</td>
+                                            <td>{{ item.6 }}</td>
+                                            <td><a href="{% url 'dropitem' item.0 %}"><img src="https://cdn-icons-png.freepik.com/256/7078/7078067.png?semt=ais_hybrid" alt="" style="width: 30px; height: auto;"></td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </form>
+                            {% if not carro %}
+                            <h2 style="width: 100%; text-align: center; margin-bottom: 132px; color: #000000;">Tu Carrito esta Vacio</h2>
+                            <button id="closecarro">Cerrar</button>
+                            {% else %}
+                            <form action="{% url 'pago_view' %}">
+                            <button id="comprar">Comprar</button>
+                        </form>
+                            <button id="closecarro">Cerrar</button>
+                            {% endif %} 
+                        </div>
+                    </div><!--Carro-->
+                    
+                    <div class="historial" id="historial"><!--Historial-->
+                        <div class="historial-content">
+                                <form id="tabla">
+                                    <table>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Fecha</th>
+                                            <th>Total</th>
+                                        </tr>
+                                        <tbody>
+                                            {% for fila in ventas %}  
+                                            <tr>
+                                                <td>{{fila.id}}</td>
+                                                <td>{{fila.fecha}}</td>
+                                                <td>{{fila.total}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </form>
+                            <button id="closehistorial">Cerrar</button>
+                        </div>
+                    </div><!--Historial-->
 
-            <div class="producto">
-                <!-- Imagen del producto -->
-                <img class="producto-imagen" src="https://www.abc.es/xlsemanal/wp-content/uploads/sites/5/2023/10/como-entender-gatos-animales.jpg" alt="Nombre del producto">
-              
-                <!-- Título del producto -->
-                <h2 class="producto-titulo">Nombre del producto</h2>
-              
-                <!-- Descripción del producto -->
-                <p class="producto-descripcion">Descripción corta del producto.</p>
-              
-                <!-- Precio del producto -->
-                <p class="producto-precio">$99.99</p>
-              
-                <!-- Botón de compra -->
-                <button>Agregar al carrito</button>
-              </div>
+                </div><!--Overlay-->
+
+            </div><!--Contenedor Opciones-->
+
+            <button id="openperfil">perfil</button><!--Boton perfil-->
+            
+                <div class="perfil" id="perfil"><!--Perfil-->
+                    <div class="perfil-content">
+                        {% if user.is_authenticated %}
+                        <div class="perfilD">
+                            <h2>Mi Perfil</h2>
+                            <p><strong>Usuario:</strong>{{user.username}}</p>
+                            <p><strong>Nombre:</strong>{{user.first_name}} {{user.last_name}}</p>
+                            <p><strong>Email:</strong>{{user.email}}</p>
+                            <form action="{% url 'logout' %}" method="post" style="display: flex; justify-content: center;">
+                                {% csrf_token %}
+                              <button type="submit" id="cerrarSesionBtn">Cerrar Sesión</button>
+                            </form>
+                          </div>
+                        {% else %}
+                            <a href="{% url 'registro_login' %}">Login</a>
+                        {% endif %}
+                        <button id="closeperfil">Cerrar</button>
+                    </div>
+                </div><!--Perfil-->
         </div>
+        <div id="contenido"> <!--Contenedor principal-->
+            {% for producto in producto  %}
+            <div class="product"><!--Producto-->
+                <img src="{{ producto.imagen }}" alt="Producto">
+                <h2 class="product-title">{{ producto.nombre }}</h2> <!--Titulo-->
+                <h2 class="product-stock">Stock: {{ producto.stock }}</h2>
+                <span class="product-price">${{ producto.precio }}</span> <!--Precio-->
+                <div id="botones"><!--caja de botones del producto-->
+                    <form action="{% url 'addtocar' producto.codigo %}">
+                       <button class="btn">Comprar</button><!--Boton--> 
+                    </form>
+                </div>
+            </div><!--Producto-->
+            {% endfor %}
+        </div><!--Contenedor principal-->
     </section>
 </body>
 </html>
